@@ -1,59 +1,87 @@
-const bcrypt = require('bcrypt');
-const jwt = require('jsonwebtoken');
 const User = require('../models/User');
+const jwt = require("jsonwebtoken");
+const bcrypt = require("bcrypt");
+const asynchandler = require("express-async-handler");
+// how to register user
 
-// User registration
-exports.registerUser = async (req, res) => {
-    const { username, email, password, role } = req.body;
+exports.registerUser = asynchandler(async (req, res) => {
     try {
+        console.log('Request body:', req.body);
+        const username = req.body.username;
+        const email = req.body.email;
+        const password = req.body.password;
+
+        // Check if the user already exists
         const existingUser = await User.findOne({ email });
         if (existingUser) {
             return res.status(400).json({ message: 'User already exists' });
         }
 
-        // Hash password
+        // Hash the password
         const hashedPassword = await bcrypt.hash(password, 10);
 
-        // Create new user
+        // Create the user
         const newUser = new User({
             username,
             email,
-            role,
             password: hashedPassword
         });
-
-        // Save user to database
         await newUser.save();
-
-        res.status(201).json({ message: 'User registered successfully', user: newUser });
+        res.status(200).json({ success: true, message: 'registration successful', newUser });
     } catch (error) {
-        console.error('Error registering user:', error);
-        res.status(500).json({ message: 'Internal server error' });
+        res.status(500).json({ message: error.message });
     }
-};
+});
 
-// User login
-exports.login = async (req, res) => {
-    const { email, password } = req.body;
+// login functionality
+
+exports.login = asynchandler(async (req, res) => {
     try {
-        // Find user by email
+        const { email, password } = req.body;
+
+
+        // empty fields
+        if (!email || !password) {
+            res.status(404);
+            throw new Error("all fields are required");
+        }
+        // Find the user by email
         const user = await User.findOne({ email });
         if (!user) {
-            return res.status(401).json({ message: 'Invalid email or password' });
+            return res.status(404).json({ message: 'User not found' });
         }
 
-        // Check if password is correct
-        const isPasswordValid = await bcrypt.compare(password, user.password);
-        if (!isPasswordValid) {
-            return res.status(401).json({ message: 'Invalid email or password' });
+        // Compare passwords
+        const isPasswordMatch = await bcrypt.compare(password, user.password);
+        if (!isPasswordMatch) {
+            return res.status(401).json({ message: 'Invalid credentials' });
         }
 
-        // Generate JWT token
-        const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET, { expiresIn: '1h' });
+        if (user && isPasswordMatch) {
+            const accesstoken = jwt.sign(
+                {
+                    user: {
+                        username: user.username,
+                        email: user.email,
+                        id: user.id,
+                    },
+                },
+                process.env.JWT_SECRET,
+                { expiresIn: "1d" }
+            );
+            res.cookie('accessToken', accesstoken, {
+                httpOnly: true,
+            });
+            res.status(200).json({ success: true, message: 'Login successful', accessToken: accesstoken });
 
-        res.status(200).json({ message: 'Login successful', token });
+        }
+
     } catch (error) {
-        console.error('Error logging in:', error);
-        res.status(500).json({ message: 'Internal server error' });
+        res.status(500).json({ message: error.message });
     }
-};
+});
+
+// current user
+exports.currentUser = asynchandler(async (req, res) => {
+    res.status(200).json(req.user);
+});
