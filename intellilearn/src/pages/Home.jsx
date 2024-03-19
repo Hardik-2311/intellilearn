@@ -1,6 +1,7 @@
 import React from "react";
 import Layout from "../layout/Layout";
 import { Link } from "react-router-dom";
+import { CiTwitter, CiLinkedin } from "react-icons/ci";
 import { Navigation, Pagination, Scrollbar, A11y } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/swiper-bundle.css";
@@ -8,6 +9,54 @@ import "swiper/swiper-bundle.css";
 // Initialize Swiper core components
 
 const Home = () => {
+  const instructors = [
+    {
+      name: "John Doe",
+      position: "Lead Instructor",
+      about: "John Doe is an experienced educator with expertise in...",
+      imageUrl: "/banner2.jpg",
+    },
+    {
+      name: "Jane Smith",
+      position: "Senior Instructor",
+      about: "Jane Smith has been teaching for over 10 years...",
+      imageUrl: "/banner2.jpg",
+    },
+    {
+      name: "Alex Johnson",
+      position: "Instructor",
+      about: "Alex Johnson specializes in advanced topics such as...",
+      imageUrl: "/banner2.jpg",
+    },
+    {
+      name: "Emily Brown",
+      position: "Assistant Instructor",
+      about: "Emily Brown is passionate about helping students...",
+      imageUrl: "/banner2.jpg",
+    },
+  ];
+  const testimonials = [
+    {
+      name: "John Doe",
+      comment: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    },
+    {
+      name: "Jane Smith",
+      comment:
+        "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+    },
+    {
+      name: "Alex Johnson",
+      comment:
+        "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
+    },
+    {
+      name: "Emily Brown",
+      comment:
+        "Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+    },
+  ];
+
   return (
     <Layout>
       <div className="mx-auto mb-16 mt-16 max-w-5xl">
@@ -133,6 +182,7 @@ const Home = () => {
             </li>
           </ol>
         </div>
+        {/* courses popular */}
         <div>
           <h2 className="text-4xl font-bold mb-6">Most Popular Courses</h2>
           <Swiper
@@ -246,7 +296,36 @@ const Home = () => {
               </div>
             </SwiperSlide>
           </Swiper>
-          
+        </div>
+        <div className="container mx-auto py-8 px-4">
+          <h1 className="text-3xl font-bold mb-6 text-center my-4 text-[#20B486]">
+            Meet Our Heroes
+          </h1>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {instructors.map((instructor, index) => (
+              <div
+                key={index}
+                className="bg-[#F2F4F7] shadow-md rounded-lg p-6 pb-2"
+              >
+                <img
+                  src={instructor.imageUrl}
+                  alt={instructor.name}
+                  className="w-24 h-24 rounded-full mx-auto mb-4"
+                />
+                <h2 className="text-xl text-center font-semibold">
+                  {instructor.name}
+                </h2>
+                <p className="text-[#20B486] mb-2 text-center">
+                  {instructor.position}
+                </p>
+                <p className="text-gray-700">{instructor.about}</p>
+                <div className="flex justify-center gap-2 items-center my-2">
+                  <CiLinkedin className="w-7 h-7 cursor-pointer hover:scale-110" />
+                  <CiTwitter className="w-7 h-7 cursor-pointer hover:scale-110" />
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </Layout>
