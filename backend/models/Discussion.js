@@ -1,11 +1,11 @@
 const mongoose = require('mongoose');
 
-const enrollmentSchema = new mongoose.Schema({
+const discussionSchema = new mongoose.Schema({
+    title: { type: String, required: true },
+    content: { type: String },
     user: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
     course: { type: mongoose.Schema.Types.ObjectId, ref: 'Course', required: true },
-    enrollmentDate: { type: Date, default: Date.now },
-    status: { type: String, enum: ['active', 'completed', 'cancelled'], default: 'active' },
-    progress: { type: Number, default: 0 }
+    creationDate: { type: Date, default: Date.now }
 });
 
-module.exports = mongoose.model('Enrollment', enrollmentSchema);
+module.exports = mongoose.model('Discussion', discussionSchema);
