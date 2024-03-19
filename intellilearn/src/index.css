@@ -35,3 +35,22 @@
     display: none;
   }
   
+
+  .swiper-button-prev , .swiper-button-next {
+    color: #20B486;
+    font-size: 20px;
+    font-weight: bolder;
+  }
+
+  .swiper-pagination-bullet{
+    width: 15px;
+    height: 15px;
+  }
+  .swiper-pagination-bullet-active{
+    height: 10px;
+    width: 40px;
+    border-radius: 12px;
+  background: #20B486  !important;
+  border: none;
+  cursor: pointer;
+  }

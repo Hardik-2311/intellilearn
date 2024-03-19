@@ -10,7 +10,7 @@ import "swiper/swiper-bundle.css";
 const Home = () => {
   return (
     <Layout>
-      <div className="mx-auto mb-32 mt-16 max-w-5xl">
+      <div className="mx-auto mb-16 mt-16 max-w-5xl">
         <div className="grid grid-cols-2 gap-8">
           {/* Left Banner */}
           <div className="col-span-1 relative isolate">
@@ -76,7 +76,7 @@ const Home = () => {
         </div>
 
         {/* Steps */}
-        <div className="mx-auto mb-32 mt-20 max-w-5xl">
+        <div className="mx-auto my-16 max-w-5xl">
           <div className="mb-12 px-6 lg:px-8">
             <div className="mx-auto max-w-2xl sm:text-center">
               <h2 className="mt-4 font-bold text-4xl text-gray-900 sm:text-5xl">
@@ -246,6 +246,7 @@ const Home = () => {
               </div>
             </SwiperSlide>
           </Swiper>
+          
         </div>
       </div>
     </Layout>
