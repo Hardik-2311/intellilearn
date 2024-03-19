@@ -5,6 +5,14 @@ const dotenv = require('dotenv');
 const cors = require('cors');
 const connectDb = require("./config/db_connection");
 
+// routes import
+const userRoutes = require('./routes/userRoute')
+const courseRoutes = require('./routes/courseRoute');
+const lessonRoutes = require('./routes/lessonRoute');
+const enrollmentRoutes = require('./routes/enrollmentRoute');
+const discussionRoutes = require('./routes/disscussionRoute');
+const assignmentRoutes = require('./routes/assignmentRoute');
+const quizRoutes = require("./routes/quizRoute")
 
 // Load environment variables from .env file
 dotenv.config();
@@ -21,7 +29,13 @@ app.use(bodyParser.urlencoded({ extended: true }));
 connectDb();
 
 // create routes
-app.use("/api/users", require("./routes/userRoute"));
+app.use("/api/users", userRoutes);
+app.use('/api/courses', courseRoutes);
+app.use('/api/lessons', lessonRoutes);
+app.use('/api/enrollments', enrollmentRoutes);
+app.use('/api/discussions', discussionRoutes);
+app.use('/api/assignments', assignmentRoutes);
+app.use('/api/quiz', quizRoutes)
 
 // Start the server
 const PORT = process.env.PORT || 3000;
