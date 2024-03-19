@@ -1,9 +1,19 @@
 const express = require('express');
-const mongoose = require('mongoose');
+const connectDb = require("./config/db_connection");
 const bodyParser = require('body-parser');
 const dotenv = require('dotenv');
 const cors = require('cors');
-const connectDb = require("./config/db_connection");
+const helmet = require('helmet');
+// Rate limiting middleware
+const rateLimit = require('express-rate-limit');
+const limiter = rateLimit({
+    windowMs: 15 * 60 * 1000,
+    max: 100
+});
+
+
+
+
 
 // routes import
 const userRoutes = require('./routes/userRoute')
@@ -20,10 +30,19 @@ dotenv.config();
 // Create Express app
 const app = express();
 
+
 // middlewares
 app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(helmet());
+app.use(limiter);
+// Error handling middleware
+app.use((err, req, res, next) => {
+    console.error(err.stack);
+    res.status(500).json({ success: false, message: 'Internal server error' });
+});
+
 
 // db
 connectDb();

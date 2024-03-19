@@ -5,6 +5,7 @@ const {
     registerUser, login , currentUser
 } = require('../controllers/userController');
 const authMiddleware = require('../middleware/TokenValidate');
+const validation = require ("../middleware/joivalidate")
 
 console.log(authMiddleware)
 // Register
