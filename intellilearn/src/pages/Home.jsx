@@ -1,7 +1,12 @@
 import React from "react";
 import Layout from "../layout/Layout";
 import { Link } from "react-router-dom";
+
+// react icons
 import { CiTwitter, CiLinkedin } from "react-icons/ci";
+import { FaGreaterThan } from "react-icons/fa6";
+
+// swiper
 import { Navigation, Pagination, Scrollbar, A11y } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/swiper-bundle.css";
@@ -35,6 +40,32 @@ const Home = () => {
       imageUrl: "/banner2.jpg",
     },
   ];
+  const servicesData = [
+    {
+      title: "Course Title 1",
+      instructor: "John Doe",
+      price: "$99",
+      ratings: 4.5,
+    },
+    {
+      title: "Course Title 1",
+      instructor: "John Doe",
+      price: "$99",
+      ratings: 4.5,
+    },
+    {
+      title: "Course Title 1",
+      instructor: "John Doe",
+      price: "$99",
+      ratings: 4.5,
+    },
+    {
+      title: "Course Title 1",
+      instructor: "John Doe",
+      price: "$99",
+      ratings: 4.5,
+    },
+  ];
   const testimonials = [
     {
       name: "John Doe",
@@ -58,7 +89,7 @@ const Home = () => {
   ];
 
   return (
-    <Layout>
+    <Layout className="grainy">
       <div className="mx-auto mb-16 mt-16 max-w-5xl">
         <div className="grid grid-cols-2 gap-8">
           {/* Left Banner */}
@@ -182,6 +213,59 @@ const Home = () => {
             </li>
           </ol>
         </div>
+
+        {/* services */}
+        <div>
+          <h2 className="text-4xl font-bold mb-6">Most Popular Courses</h2>
+          <Swiper
+            modules={[Navigation, Pagination, Scrollbar, A11y]}
+            spaceBetween={50}
+            slidesPerView={1}
+            breakpoints={{
+              640: {
+                slidesPerView: 2,
+                spaceBetween: 20,
+              },
+              768: {
+                slidesPerView: 3,
+                spaceBetween: 30,
+              },
+              1024: {
+                slidesPerView: 3,
+                spaceBetween: 50,
+              },
+            }}
+            loop={true}
+            navigation
+            pagination={{ clickable: true }}
+            scrollbar={{ draggable: true }}
+            onSwiper={(swiper) => console.log(swiper)}
+            onSlideChange={() => console.log("slide change")}
+            className="p-12"
+          >
+            {servicesData.map((service, index) => (
+              <SwiperSlide key={index}>
+                <div className="course-card bg-white p-4 shadow-lg cursor-pointer hover:bg-[#4AC8AE] hover:text-white rounded-lg">
+                  <div className="course-details">
+                    <h3 className="course-title text-xl font-bold mb-2">
+                      {service.title}
+                    </h3>
+                    <p className="course-instructor">
+                      Instructor: {service.instructor}
+                    </p>
+                    <p className="course-price hover:text-gray-700">
+                      {service.price}
+                    </p>
+                    <div className="course-ratings mt-2">
+                      Ratings: {service.ratings}
+                    </div>
+                  </div>
+                </div>
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        </div>
+
         {/* courses popular */}
         <div>
           <h2 className="text-4xl font-bold mb-6">Most Popular Courses</h2>
@@ -203,12 +287,13 @@ const Home = () => {
                 spaceBetween: 50,
               },
             }}
+            loop={true}
             navigation
             pagination={{ clickable: true }}
             scrollbar={{ draggable: true }}
             onSwiper={(swiper) => console.log(swiper)}
             onSlideChange={() => console.log("slide change")}
-            className="p-14"
+            className="p-12"
           >
             <SwiperSlide>
               <div className="course-card bg-white p-4 shadow-lg rounded-lg">
@@ -297,6 +382,8 @@ const Home = () => {
             </SwiperSlide>
           </Swiper>
         </div>
+
+        {/* testimonials  */}
         <div className="container mx-auto py-8 px-4">
           <h1 className="text-3xl font-bold mb-6 text-center my-4 text-[#20B486]">
             Meet Our Heroes
@@ -320,8 +407,8 @@ const Home = () => {
                 </p>
                 <p className="text-gray-700">{instructor.about}</p>
                 <div className="flex justify-center gap-2 items-center my-2">
-                  <CiLinkedin className="w-7 h-7 cursor-pointer hover:scale-110" />
-                  <CiTwitter className="w-7 h-7 cursor-pointer hover:scale-110" />
+                  <CiLinkedin className="w-7 h-7 cursor-pointer transition-all duration-500 ease-in-out hover:scale-110" />
+                  <CiTwitter className="w-7 h-7 cursor-pointer transition-all duration-500 ease-in-out hover:scale-110" />
                 </div>
               </div>
             ))}

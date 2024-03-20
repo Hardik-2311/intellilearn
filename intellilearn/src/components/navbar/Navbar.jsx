@@ -3,9 +3,9 @@ import { IoIosArrowRoundForward } from "react-icons/io";
 import { NavLink } from "react-router-dom";
 import Button from "../Button/Button";
 
-const Navbar = () => {
+const Navbar = ({ className }) => {
   return (
-    <nav className="bg-gray-100 shadow py-4 sticky top-0 z-50 grainy">
+    <nav className={`bg-gray-100 shadow py-4 sticky top-0 z-50 ${className}`}>
       <div className="container mx-auto flex justify-between items-center lg:px-24 px-14">
         <div className="logo text-xl font-bold">Your Logo</div>
         <ul className=" justify-between space-x-4 cursor-pointer md:flex hidden ">
@@ -39,20 +39,12 @@ const Navbar = () => {
           </li>
         </ul>
         <div className="flex gap-4 justify-between items-center">
+          <Button className="" title="Login" onClick={() => {}} />
           <Button
-          className=""
-            title="Login"
-            onClick={() => {
-              
-            }}
-          />
-          <Button
-          className="bg-[#20B486] text-white"
+            className="bg-[#20B486] text-white"
             title="Get Started"
             icon={<IoIosArrowRoundForward className="w-6 h-6" />}
-            onClick={() => {
-              
-            }}
+            onClick={() => {}}
           />
         </div>
       </div>
