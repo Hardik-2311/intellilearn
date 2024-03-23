@@ -15,7 +15,7 @@ import Popular from "../components/popularcourses/Popular";
 const Home = () => {
   return (
     <Layout className="grainy">
-      <div className="mx-auto mb-16 mt-16 max-w-5xl">
+      <div className="mx-auto mb-16 mt-16 w-[90%]">
         <Banner />
 
         {/* Steps */}
