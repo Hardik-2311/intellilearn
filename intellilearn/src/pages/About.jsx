@@ -1,7 +1,24 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Layout from "../layout/Layout";
+import { motion, useAnimation } from "framer-motion";
+import { useInView } from "react-intersection-observer";
 
 const About = () => {
+  const [ref, inView] = useInView();
+  const animation = useAnimation();
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    if (inView && !scrolled) {
+      animation.start({
+        opacity: 1,
+        y: 0,
+        transition: { duration: 0.6, ease: "easeInOut" },
+      });
+      setScrolled(true);
+    }
+  }, [animation, inView, scrolled]);
+
   const benefitsData = [
     {
       name: "Standardization",
@@ -34,10 +51,19 @@ const About = () => {
         "Utilize a diverse range of multimedia resources to deliver engaging and interactive learning experiences, catering to different learning styles effectively.",
     },
   ];
+
+  const fadeInUp = {
+    initial: { opacity: 0, y: 20 },
+    animate: { opacity: 1, y: 0 },
+  };
+
   return (
     <Layout>
-      <div className="container mx-auto px-4 py-8 my-14 flex items-center justify-between gap-4">
-        <div className="w-1/2">
+      <div
+        ref={ref}
+        className="container mx-auto px-4 py-8 my-14 flex items-center justify-between gap-4"
+      >
+        <motion.div {...fadeInUp} className="w-1/2" animate={animation}>
           <h1 className="text-4xl font-bold mb-4 text-[#1A906B]">About Us</h1>
           <h3 className="text-3xl capitalize font-bold">
             <span className="text-[#FF9B26]">INTELLILEARN</span> providing the
@@ -49,32 +75,54 @@ const About = () => {
             INTELLILEARN opens doors to endless possibilities, empowering
             learners to achieve their full potential.
           </p>
-          <button className="bg-[#FF9B26] my-8 px-8 w-[200px] text-white py-2 rounded-full">
+          <motion.button
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className="bg-[#FF9B26] my-8 px-8 w-[200px] text-white py-2 rounded-full"
+          >
             Join us
-          </button>
-        </div>
-        <div className="relative w-[400px] h-[330px] bg-[#F2F2F2] rounded-xl">
-          <div className="absolute -top-10 -right-10">
+          </motion.button>
+        </motion.div>
+        <motion.div
+          {...fadeInUp}
+          className="relative w-[400px] h-[330px] bg-[#F2F2F2] rounded-xl"
+          animate={animation}
+        >
+          <motion.div
+            initial={{ x: -50, opacity: 0 }}
+            animate={{ x: 0, opacity: 1 }}
+            transition={{ delay: 0.5 }}
+            className="absolute -top-10 -right-10"
+          >
             <img
               src="/banner2.jpg"
               alt=""
               className="w-[250px] h-[140px] rounded-xl"
             />
-          </div>
-          <div className="absolute top-60 -left-10 rounded-xl">
+          </motion.div>
+          <motion.div
+            initial={{ x: 50, opacity: 0 }}
+            animate={{ x: 0, opacity: 1 }}
+            transition={{ delay: 0.5 }}
+            className="absolute top-60 -left-10 rounded-xl"
+          >
             <img
               src="/banner2.jpg"
               alt=""
               className="w-[250px] h-[140px] rounded-xl"
             />
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
       </div>
       <div className="container mx-auto px-4 py-8 my-14 flex items-center justify-between gap-6">
         <div className="w-1/2">
           <img src="/banner-image.jpg" alt="" />
         </div>
-        <div className="w-1/2 flex flex-col gap-4">
+        <motion.div
+          {...fadeInUp}
+          className="w-1/2 flex flex-col gap-4"
+          animate={animation}
+        >
           <h3 className="text-2xl font-bold mb-2 text-[#1A906B] uppercase">
             Discover Our Features
           </h3>
@@ -98,10 +146,14 @@ const About = () => {
             discovery, where every step brings you closer to your goals and
             aspirations.
           </p>
-          <button className="bg-[#FF9B26] px-8 w-[200px] text-white py-2 rounded-full">
+          <motion.button
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className="bg-[#FF9B26] px-8 w-[200px] text-white py-2 rounded-full"
+          >
             Learn More
-          </button>
-        </div>
+          </motion.button>
+        </motion.div>
       </div>
       <div className="mx-auto my-16 max-w-5xl">
         <div className="mb-12 px-6 lg:px-8">
@@ -122,11 +174,13 @@ const About = () => {
         <div className="container mx-auto px-4 py-8 my-14">
           <div className="lg:grid lg:grid-cols-3 md:grid md:grid-cols-2 sm:grid sm:grid-cols-1 gap-4">
             {benefitsData.map((benefit, index) => (
-              <div
+              <motion.div
                 key={index}
+                {...fadeInUp}
                 className={`rounded-lg ${
                   index % 2 === 0 ? "bg-[#22B286]/20" : "bg-gray-100"
                 } p-4`}
+                animate={animation}
               >
                 <div className="text-lg font-bold text-[#22b286]/90 mb-2">
                   {`0${index + 1}`}
@@ -135,7 +189,7 @@ const About = () => {
                 <div className="text-sm text-gray-600 mb-4">
                   {benefit.description}
                 </div>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>
