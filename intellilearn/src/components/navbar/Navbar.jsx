@@ -10,12 +10,12 @@ const Navbar = ({ className }) => {
         <div className="logo text-xl font-bold">Your Logo</div>
         <ul className=" items-baseline justify-between space-x-4 cursor-pointer md:flex hidden ">
           <li>
-            <NavLink to="/" className="nav-link" activeClassName="active">
+            <NavLink to="/" className="nav-link" activeclassname="active">
               Home
             </NavLink>
           </li>
           <li>
-            <NavLink to="/about" className="nav-link" activeClassName="active">
+            <NavLink to="/about" className="nav-link" activeclassname="active">
               About
             </NavLink>
           </li>
@@ -23,7 +23,7 @@ const Navbar = ({ className }) => {
             <NavLink
               to="/contact"
               className="nav-link"
-              activeClassName="active"
+              activeclassname="active"
             >
               Contact
             </NavLink>
