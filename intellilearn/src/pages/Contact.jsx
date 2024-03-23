@@ -79,8 +79,6 @@ const Contact = () => {
                     <p className="text-base">info@yourdomain.com</p>
                   </div>
                 </motion.div>
-
-                {/* Repeat similar motion.div elements for other sections */}
               </motion.div>
             </div>
             <div className="w-full px-4 lg:w-1/2 xl:w-5/12">
