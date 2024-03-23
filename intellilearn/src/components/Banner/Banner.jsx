@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+
 const Banner = () => {
   return (
     <div className="grid grid-cols-2 gap-8">
@@ -17,19 +18,18 @@ const Banner = () => {
             className="relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-30 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem]"
           />
         </div>
-        <div className="flex flex-col  h-full px-6 lg:px-8">
+        <div className="flex flex-col h-full px-6 lg:px-8">
           <h2 className="mt-2 font-bold text-4xl text-gray-900 sm:text-5xl capitalize">
-            Up you <span className="text-[#20B486]">skills</span> to{" "}
-            <span className="text-[#20B486]">Advannce</span> your{" "}
+            Elevate your <span className="text-[#20B486]">skills</span> to{" "}
+            <span className="text-[#20B486]">advance</span> your{" "}
             <span className="text-[#20B486]">career</span> path.
           </h2>
           <p className="my-4 text-lg text-gray-600">
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Laboriosam
-            minima nesciunt maxime saepe repellat ipsa consequuntur at odio
-            accusantium corrupti! Quisquam consequatur in repellat deleniti
-            delectus tenetur rerum, id illum.
+            Discover a world of opportunities and unlock your potential with our
+            comprehensive learning resources. Whether you're a beginner or an
+            expert, we have everything you need to succeed.
           </p>
-          <div className=" gap-4 flex items-center justify-items-start ">
+          <div className="gap-4 flex items-center justify-items-start">
             <div>
               <Link
                 to="/signup"
