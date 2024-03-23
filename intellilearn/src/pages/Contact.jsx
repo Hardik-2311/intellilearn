@@ -51,6 +51,34 @@ const Contact = () => {
                     </p>
                   </div>
                 </motion.div>
+                <motion.div
+                  className="mb-8 flex w-full max-w-[370px]"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.4, duration: 0.5 }}
+                >
+                  <div className="mr-6 flex h-[60px] w-full max-w-[60px] items-center justify-center overflow-hidden rounded bg-[#22B286]/5 text-[#22B286] sm:h-[70px] sm:max-w-[70px]">
+                    <AiOutlinePhone size={32} />
+                  </div>
+                  <div className="w-full">
+                    <h4 className="mb-1 text-xl font-bold ">Phone Number</h4>
+                    <p className="text-base">(+62)81 414 257 9980</p>
+                  </div>
+                </motion.div>
+                <motion.div
+                  className="mb-8 flex w-full max-w-[370px]"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.4, duration: 0.5 }}
+                >
+                  <div className="mr-6 flex h-[60px] w-full max-w-[60px] items-center justify-center overflow-hidden rounded bg-[#22B286]/5 text-[#22B286] sm:h-[70px] sm:max-w-[70px]">
+                    <AiOutlineMail size={32} />
+                  </div>
+                  <div className="w-full">
+                    <h4 className="mb-1 text-xl font-bold ">Email Address</h4>
+                    <p className="text-base">info@yourdomain.com</p>
+                  </div>
+                </motion.div>
 
                 {/* Repeat similar motion.div elements for other sections */}
               </motion.div>
