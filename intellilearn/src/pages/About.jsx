@@ -61,7 +61,7 @@ const About = () => {
     <Layout>
       <div
         ref={ref}
-        className="container mx-auto px-4 py-8 my-14 flex items-center justify-between gap-4"
+        className=" w-[90%] mx-auto px-4 py-8 my-14 flex items-center justify-between gap-4"
       >
         <motion.div {...fadeInUp} className="w-1/2" animate={animation}>
           <h1 className="text-4xl font-bold mb-4 text-[#1A906B]">About Us</h1>
@@ -114,7 +114,7 @@ const About = () => {
           </motion.div>
         </motion.div>
       </div>
-      <div className="container mx-auto px-4 py-8 my-14 flex items-center justify-between gap-6">
+      <div className="w-[90%] mx-auto px-4 py-8 my-14 flex items-center justify-between gap-6">
         <div className="w-1/2">
           <img src="/banner-image.jpg" alt="" />
         </div>
@@ -155,9 +155,9 @@ const About = () => {
           </motion.button>
         </motion.div>
       </div>
-      <div className="mx-auto my-16 max-w-5xl">
+      <div className=" w-[90%] mx-auto my-16 ">
         <div className="mb-12 px-6 lg:px-8">
-          <div className="mx-auto max-w-2xl sm:text-center">
+          <div className="mx-auto sm:text-center">
             <p className="text-lg text-[#ff9b26] font-bold uppercase">
               Our Benefits
             </p>
@@ -171,7 +171,7 @@ const About = () => {
           </div>
         </div>
         {/* card */}
-        <div className="container mx-auto px-4 py-8 my-14">
+        <div className="w-[90%] mx-auto px-4 py-8 my-14">
           <div className="lg:grid lg:grid-cols-3 md:grid md:grid-cols-2 sm:grid sm:grid-cols-1 gap-4">
             {benefitsData.map((benefit, index) => (
               <motion.div
