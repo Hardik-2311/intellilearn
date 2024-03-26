@@ -7,8 +7,13 @@ const courseSchema = new mongoose.Schema({
     price: { type: Number, default: 0 },
     enrollmentLimit: { type: Number, default: 0 },
     duration: { type: String },
-    category: { type: String },
-    creationDate: { type: Date, default: Date.now }
+    category: {
+        mainCategory: { type: String, required: true },
+        subCategory: { type: String, required: true }
+    },
+    creationDate: { type: Date, default: Date.now },
+    difficulty: { type: String, enum: ['beginner', 'intermediate', 'advanced'], default: 'beginner' },
+    image: { type: String, required: true }
 });
 
 module.exports = mongoose.model('Course', courseSchema);
