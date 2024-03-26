@@ -4,7 +4,7 @@ import DashLay from "../layout/DashLay";
 const Dashboard = () => {
   return (
     <DashLay>
-      <div>Dashboard</div>
+    dashboard
     </DashLay>
   );
 };
