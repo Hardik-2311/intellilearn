@@ -10,8 +10,8 @@ export const dummyData = [
         category: 'Web Development',
         difficulty: 'beginner',
         image: '/banner2.jpg',
-        rating: 4.5, // Add rating field
-        lessons: 40 // Add lessons field
+        rating: 4.5,
+        lessons: 40 
     },
     {
         _id: 2,
@@ -24,8 +24,8 @@ export const dummyData = [
         category: 'IT Certifications',
         difficulty: 'intermediate',
         image: '/banner-image.jpg',
-        rating: 4.2, // Add rating field
-        lessons: 30 // Add lessons field
+        rating: 4.2,
+        lessons: 30 
     },
     {
         _id: 1,
@@ -38,8 +38,8 @@ export const dummyData = [
         category: 'Web Development',
         difficulty: 'beginner',
         image: '/banner2.jpg',
-        rating: 4.5, // Add rating field
-        lessons: 40 // Add lessons field
+        rating: 4.5,
+        lessons: 40 
     },
     {
         _id: 2,
@@ -52,8 +52,8 @@ export const dummyData = [
         category: 'IT Certifications',
         difficulty: 'intermediate',
         image: '/banner-image.jpg',
-        rating: 4.2, // Add rating field
-        lessons: 30 // Add lessons field
+        rating: 4.2,
+        lessons: 30 
     },
 
     {
@@ -67,8 +67,8 @@ export const dummyData = [
         category: 'Web Development',
         difficulty: 'beginner',
         image: '/banner2.jpg',
-        rating: 4.5, // Add rating field
-        lessons: 40 // Add lessons field
+        rating: 4.5,
+        lessons: 40 
     },
     {
         _id: 2,
@@ -81,8 +81,8 @@ export const dummyData = [
         category: 'IT Certifications',
         difficulty: 'intermediate',
         image: '/banner-image.jpg',
-        rating: 4.2, // Add rating field
-        lessons: 30 // Add lessons field
+        rating: 4.2,
+        lessons: 30
     },
 
 
