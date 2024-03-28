@@ -6,10 +6,11 @@ import { dummyData } from "../services/Course";
 import CourseCard from "../components/cards/CourseCard";
 
 const Dashboard = () => {
+  const username = "Hardik";
   return (
     <DashLay>
-      <SpecialEntryView />
-      <CourseCard dummyData={dummyData}/>
+      <SpecialEntryView userName={username} />
+      <CourseCard dummyData={dummyData} />
       <Pricing />
     </DashLay>
   );
