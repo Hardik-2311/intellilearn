@@ -107,20 +107,20 @@ const DashNav = ({ className }) => {
             </li>
             <li className="text-[#080808]/50">
               <NavLink
-                to="/about"
+                to="/pricing"
                 className="nav-link"
                 activeclassname="active"
               >
-                About Us
+                Pricing
               </NavLink>
             </li>
             <li className="text-[#080808]/50">
               <NavLink
-                to="/contact"
+                to="/learnings"
                 className="nav-link"
                 activeclassname="active"
               >
-                Contact Us
+                My Learning
               </NavLink>
             </li>
           </ul>
@@ -144,13 +144,15 @@ const DashNav = ({ className }) => {
                 alt="Profile"
                 className="w-8 h-8 rounded-full"
               />
-              <p className="text-sm font-extrabold text-[#080808]">{user.name}</p>
+              <p className="text-sm font-extrabold text-[#080808]">
+                {user.name}
+              </p>
             </div>
             {/* User Name */}
             {/* Notification Bell Icon */}
-           <div className="bg-[#22B286]/10 p-2 rounded-lg">
-           <IoIosNotifications className="  text-[#22b289] w-5 h-5 cursor-pointer" />
-           </div>
+            <div className="bg-[#22B286]/10 p-2 rounded-lg">
+              <IoIosNotifications className="  text-[#22b289] w-5 h-5 cursor-pointer" />
+            </div>
           </div>
         </div>
       </div>
