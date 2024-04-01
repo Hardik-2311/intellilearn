@@ -6,7 +6,6 @@ import { dummyData } from "../services/Course";
 import CourseCard from "../components/cards/CourseCard";
 import Companies from "../components/Companies/Companies";
 
-
 const Dashboard = () => {
   const username = "Hardik";
   return (
@@ -442,8 +441,6 @@ const Dashboard = () => {
           </div>
         </div>
       </section>
-
-      
     </DashLay>
   );
 };
